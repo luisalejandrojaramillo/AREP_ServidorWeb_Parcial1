@@ -35,6 +35,8 @@ mvn package
 ```
 java -cp target/Parcial-1.0-SNAPSHOT.jar edu.escuelaing.arep.cliente.JavaClient
 ```
+![JavaClient](/img/javac.PNG)
+
 6. Realizamos los cambios respectivos al Procfile
 
 7. Heroku local
@@ -42,8 +44,6 @@ java -cp target/Parcial-1.0-SNAPSHOT.jar edu.escuelaing.arep.cliente.JavaClient
 mvn clean install
 heroku local web
 ```
-
-
 
 ## Requerimientos
 

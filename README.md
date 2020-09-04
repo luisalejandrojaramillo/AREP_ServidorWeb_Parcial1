@@ -31,8 +31,10 @@ cd AREP_ServidorWeb_Parcial1
 ```
 mvn package
 ```
-5. Ejecutamos 
-
+5. Ejecutamos el Java Client
+```
+java -cp target/Parcial-1.0-SNAPSHOT.jar edu.escuelaing.arep.cliente.JavaClient
+```
 6. Realizamos los cambios respectivos al Procfile
 
 7. Heroku local
@@ -40,6 +42,8 @@ mvn package
 mvn clean install
 heroku local web
 ```
+
+
 
 ## Requerimientos
 

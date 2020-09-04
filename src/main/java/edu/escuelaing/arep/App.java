@@ -20,6 +20,11 @@ public class App {
         Calculator.printArray(arr);
 
     }
+
+    /**
+     * Obtenemos el puerto automaticamente
+     * @return
+     */
     static int getPort() {
         if (System.getenv("PORT") != null) {
             return Integer.parseInt(System.getenv("PORT"));
@@ -27,6 +32,12 @@ public class App {
         return 4567; //returns default port if heroku-port isn't set(i.e. on localhost)
     }
 
+    /**
+     * Donde vamos a solicitar los datos
+     * @param req
+     * @param res
+     * @return
+     */
     private static  String mainPage(Request req, Response res){
         String content = "<!DOCTYPE html>"
                 + "<html>"
@@ -49,16 +60,22 @@ public class App {
         return content;
     }
 
+    /**
+     * Los resultados del bubble sort
+     * @param req
+     * @param res
+     * @return
+     */
     private static String resultsBS(Request req, Response res) {
-
         String[] a=req.queryParams("num").split(",");
         String respuesta ="" ;
-
         double[] dataList = new double[a.length];
         for(int i=0;i<a.length;i++){
             dataList[i] = Double.parseDouble(a[i]);
         }
         double[] listAux = Calculator.bubbleSort(dataList);
+        String prom = String.valueOf(Calculator.promedio(dataList));
+        String suma = String.valueOf(Calculator.suma(dataList));
         respuesta = String.valueOf(listAux[0]);
         for(int i = 1; i<listAux.length;i++){
             respuesta = respuesta +" , "+ String.valueOf(listAux[i]);
@@ -67,9 +84,10 @@ public class App {
                 = "<!DOCTYPE html>" + "<html>" + "<body>"
                 + "<center>" + "<h2>Resultado</h2>"
                 + "<h3> BubbleSort: " + respuesta + "</h3>"
+                + "<h3> Promedio: " + prom + "</h3>"
+                + "<h3> Suma: " + suma + "</h3>"
                 + "<p><a href=\"/\">Back</a></p>"
                 + "</center>" + "</body>" + "</html>";
         return pageContent;
     }
-
 }
